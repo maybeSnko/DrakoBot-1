@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بوت ديسكورد - Drako Bot</title>
+    <!-- إضافة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* التصميم العام */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #000;
-            color: #fff;
+            background-color: #000; /* خلفية سوداء */
+            color: #fff; /* نص أبيض */
             margin: 0;
             padding: 0;
             line-height: 1.6;
@@ -17,28 +19,28 @@
 
         /* تصميم الهيدر */
         header {
-            background-color: #1a1a1a;
-            padding: 40px 20px;
+            background-color: #1a1a1a; /* خلفية داكنة */
+            padding: 60px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
+            animation: fadeIn 2s ease-in-out;
         }
 
         header h1 {
             margin: 0;
-            font-size: 3rem;
-            color: #ff0000;
-            animation: fadeIn 2s ease-in-out;
+            font-size: 3.5rem;
+            color: #ff0000; /* لون أحمر */
         }
 
         header p {
             margin: 10px 0 0;
-            font-size: 1.2rem;
-            color: #b9bbbe;
+            font-size: 1.3rem;
+            color: #b9bbbe; /* لون رمادي فاتح */
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* تصميم المحتوى */
@@ -49,27 +51,43 @@
         }
 
         .section {
-            background-color: #1a1a1a;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            background-color: #1a1a1a; /* خلفية داكنة */
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+        .section:nth-child(5) { animation-delay: 1s; }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(255, 0, 0, 0.5); /* ظل أحمر أقوى */
         }
 
         .section h2 {
-            color: #ff0000;
-            margin-bottom: 15px;
-            font-size: 2rem;
+            color: #ff0000; /* لون أحمر */
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-align: center;
         }
 
         .section p {
-            color: #b9bbbe;
-            font-size: 1.1rem;
+            color: #b9bbbe; /* لون رمادي فاتح */
+            font-size: 1.2rem;
+            text-align: center;
         }
 
         .section ul {
@@ -78,31 +96,42 @@
         }
 
         .section ul li {
-            background-color: #262626;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            color: #fff;
+            background-color: #262626; /* خلفية داكنة */
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            color: #fff; /* نص أبيض */
             transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .section ul li i {
+            margin-left: 10px;
+            color: #ff0000; /* لون أحمر */
+            font-size: 1.5rem;
         }
 
         .section ul li:hover {
-            background-color: #ff0000;
+            background-color: #ff0000; /* لون أحمر عند التحويم */
         }
 
         /* تصميم الأزرار */
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: #ff0000;
-            color: #fff;
+            padding: 12px 24px;
+            background-color: #ff0000; /* لون أحمر */
+            color: #fff; /* نص أبيض */
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+            text-align: center;
         }
 
         .btn:hover {
-            background-color: #cc0000;
+            background-color: #cc0000; /* لون أحمر غامق */
+            transform: translateY(-3px);
         }
 
         /* تصميم الإحصائيات */
@@ -111,30 +140,32 @@
             justify-content: space-around;
             text-align: center;
             margin: 40px 0;
+            flex-wrap: wrap;
         }
 
         .stats .stat-item {
-            background-color: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            background-color: #1a1a1a; /* خلفية داكنة */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
             width: 30%;
+            margin: 10px;
             transition: transform 0.3s ease;
         }
 
         .stats .stat-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         .stats .stat-item h3 {
-            color: #ff0000;
-            font-size: 2rem;
+            color: #ff0000; /* لون أحمر */
+            font-size: 2.5rem;
             margin: 0;
         }
 
         .stats .stat-item p {
-            color: #b9bbbe;
-            font-size: 1.1rem;
+            color: #b9bbbe; /* لون رمادي فاتح */
+            font-size: 1.2rem;
         }
 
         /* تصميم التعليقات */
@@ -143,43 +174,44 @@
         }
 
         .comment-form {
-            background-color: #262626;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            background-color: #262626; /* خلفية داكنة */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
             margin-bottom: 20px;
         }
 
         .comment-form input,
         .comment-form textarea {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #444;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #444; /* حدود رمادية */
             border-radius: 5px;
-            background-color: #333;
-            color: #fff;
+            background-color: #333; /* خلفية داكنة */
+            color: #fff; /* نص أبيض */
             font-size: 16px;
         }
 
         .comment-form textarea {
             resize: vertical;
-            height: 100px;
+            height: 120px;
         }
 
         .comment-form button {
-            background-color: #ff0000;
-            color: #fff;
+            background-color: #ff0000; /* لون أحمر */
+            color: #fff; /* نص أبيض */
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .comment-form button:hover {
-            background-color: #cc0000;
+            background-color: #cc0000; /* لون أحمر غامق */
+            transform: translateY(-3px);
         }
 
         .comments-list {
@@ -187,27 +219,22 @@
         }
 
         .comment-item {
-            background-color: #262626;
-            padding: 15px;
-            margin-bottom: 10px;
+            background-color: #262626; /* خلفية داكنة */
+            padding: 20px;
+            margin-bottom: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
             animation: fadeIn 0.5s ease-in-out;
         }
 
         .comment-item h3 {
             margin: 0;
-            color: #ff0000;
+            color: #ff0000; /* لون أحمر */
         }
 
         .comment-item p {
             margin: 10px 0;
-            color: #b9bbbe;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            color: #b9bbbe; /* لون رمادي فاتح */
         }
 
         /* تصميم الدعم الفني */
@@ -216,10 +243,10 @@
         }
 
         .support-item {
-            background-color: #262626;
-            margin-bottom: 10px;
+            background-color: #262626; /* خلفية داكنة */
+            margin-bottom: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
             overflow: hidden;
             transition: all 0.3s ease;
         }
@@ -234,17 +261,17 @@
             align-items: center;
             padding: 15px;
             cursor: pointer;
-            background-color: #333;
+            background-color: #333; /* خلفية داكنة */
         }
 
         .support-item-header h3 {
             margin: 0;
-            color: #ff0000;
+            color: #ff0000; /* لون أحمر */
         }
 
         .support-item-header .icon {
             font-size: 20px;
-            color: #ff0000;
+            color: #ff0000; /* لون أحمر */
             transition: transform 0.3s ease;
         }
 
@@ -266,26 +293,66 @@
 
         .support-item-content p {
             margin: 0;
-            color: #b9bbbe;
+            color: #b9bbbe; /* لون رمادي فاتح */
+        }
+
+        /* تصميم التواصل الاجتماعي */
+        .social-links {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #ff0000; /* لون أحمر */
+            font-size: 2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #cc0000; /* لون أحمر غامق */
+            transform: translateY(-5px);
         }
 
         /* تصميم الفوتر */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #1a1a1a;
-            color: #b9bbbe;
+            padding: 30px;
+            background-color: #1a1a1a; /* خلفية داكنة */
+            color: #b9bbbe; /* لون رمادي فاتح */
             margin-top: 40px;
-            box-shadow: 0 -4px 6px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 -4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
         }
 
         footer a {
-            color: #ff0000;
+            color: #ff0000; /* لون أحمر */
             text-decoration: none;
         }
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        /* تصميم للهواتف */
+        @media (max-width: 768px) {
+            .stats .stat-item {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -312,11 +379,11 @@
         <div class="section">
             <h2>ميزات البوت</h2>
             <ul>
-                <li>إدارة الأعضاء (طرد، حظر، كتم).</li>
-                <li>تشغيل الموسيقى في القنوات الصوتية.</li>
-                <li>أوامر ترفيهية مثل الأسئلة والألعاب.</li>
-                <li>نظام تحذيرات تلقائي.</li>
-                <li>دعم اللغة العربية.</li>
+                <li><i class="fas fa-users-cog"></i> إدارة الأعضاء (طرد، حظر، كتم).</li>
+                <li><i class="fas fa-music"></i> تشغيل الموسيقى في القنوات الصوتية.</li>
+                <li><i class="fas fa-gamepad"></i> أوامر ترفيهية مثل الأسئلة والألعاب.</li>
+                <li><i class="fas fa-exclamation-triangle"></i> نظام تحذيرات تلقائي.</li>
+                <li><i class="fas fa-language"></i> دعم اللغة العربية.</li>
             </ul>
         </div>
 
@@ -404,61 +471,9 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- الفوتر -->
-    <footer>
-        <p>تم التطوير بواسطة <a href="https://discord.com/users/YOUR_DISCORD_ID" target="_blank">Snko</a> | جميع الحقوق محفوظة &copy; 2023</p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // إضافة تعليق جديد
-        function addComment() {
-            const name = document.getElementById('comment-name').value;
-            const text = document.getElementById('comment-text').value;
-
-            if (name && text) {
-                const commentElement = document.createElement('div');
-                commentElement.classList.add('comment-item');
-                commentElement.innerHTML = `
-                    <h3>${name}</h3>
-                    <p>${text}</p>
-                `;
-
-                document.getElementById('comments-list').appendChild(commentElement);
-
-                // مسح الحقول بعد الإرسال
-                document.getElementById('comment-name').value = '';
-                document.getElementById('comment-text').value = '';
-            } else {
-                alert('الرجاء ملء جميع الحقول!');
-            }
-        }
-
-        // تفعيل طي وفرد العناصر
-        const supportItems = document.querySelectorAll('.support-item');
-
-        supportItems.forEach(item => {
-            item.addEventListener('click', () => {
-                item.classList.toggle('active');
-            });
-        });
-    </script>
-
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقعي على Vercel</title>
-
-
-    <h1>مرحبًا بكم في موقعي!</h1>
-    
-
-
-
-</body>
-</html>
-
-
+        <!-- قسم التواصل الاجتماعي -->
+        <div class="section">
+            <h2>تواصل معنا</h2>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-discord"></i></
