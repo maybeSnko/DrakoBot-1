@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوت ديسكورد - Drako Bot</title>
+    <style>
+        /* التصميم العام */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* تصميم الهيدر */
+        header {
+            background-color: #1a1a1a;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            color: #ff0000;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            color: #b9bbbe;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* تصميم المحتوى */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: #1a1a1a;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #ff0000;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .section p {
+            color: #b9bbbe;
+            font-size: 1.1rem;
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            background-color: #262626;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .section ul li:hover {
+            background-color: #ff0000;
+        }
+
+        /* تصميم الأزرار */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #cc0000;
+        }
+
+        /* تصميم الإحصائيات */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .stats .stat-item {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            width: 30%;
+            transition: transform 0.3s ease;
+        }
+
+        .stats .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stats .stat-item h3 {
+            color: #ff0000;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .stats .stat-item p {
+            color: #b9bbbe;
+            font-size: 1.1rem;
+        }
+
+        /* تصميم التعليقات */
+        .comments {
+            margin-top: 40px;
+        }
+
+        .comment-form {
+            background-color: #262626;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .comment-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .comment-form button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .comment-form button:hover {
+            background-color: #cc0000;
+        }
+
+        .comments-list {
+            margin-top: 20px;
+        }
+
+        .comment-item {
+            background-color: #262626;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .comment-item h3 {
+            margin: 0;
+            color: #ff0000;
+        }
+
+        .comment-item p {
+            margin: 10px 0;
+            color: #b9bbbe;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تصميم الدعم الفني */
+        .support-list {
+            margin-top: 20px;
+        }
+
+        .support-item {
+            background-color: #262626;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .support-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .support-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            background-color: #333;
+        }
+
+        .support-item-header h3 {
+            margin: 0;
+            color: #ff0000;
+        }
+
+        .support-item-header .icon {
+            font-size: 20px;
+            color: #ff0000;
+            transition: transform 0.3s ease;
+        }
+
+        .support-item.active .icon {
+            transform: rotate(180deg);
+        }
+
+        .support-item-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .support-item.active .support-item-content {
+            padding: 15px;
+            max-height: 500px;
+        }
+
+        .support-item-content p {
+            margin: 0;
+            color: #b9bbbe;
+        }
+
+        /* تصميم الفوتر */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #b9bbbe;
+            margin-top: 40px;
+            box-shadow: 0 -4px 6px rgba(255, 0, 0, 0.3);
+        }
+
+        footer a {
+            color: #ff0000;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <h1>Drako Bot</h1>
+        <p>بوت ديسكورد متطور لإدارة السيرفرات وتوفير تجربة ممتعة!</p>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <!-- قسم المقدمة -->
+        <div class="section">
+            <h2>مقدمة عن البوت</h2>
+            <p>
+                مرحبًا! هذا البوت مصمم لمساعدة مدراء السيرفرات في إدارة أعضائهم وتوفير تجربة تفاعلية ممتعة.
+                يحتوي البوت على العديد من الميزات التي تجعل سيرفرك أكثر تنظيمًا وحيوية.
+            </p>
+        </div>
+
+        <!-- قسم الميزات -->
+        <div class="section">
+            <h2>ميزات البوت</h2>
+            <ul>
+                <li>إدارة الأعضاء (طرد، حظر، كتم).</li>
+                <li>تشغيل الموسيقى في القنوات الصوتية.</li>
+                <li>أوامر ترفيهية مثل الأسئلة والألعاب.</li>
+                <li>نظام تحذيرات تلقائي.</li>
+                <li>دعم اللغة العربية.</li>
+            </ul>
+        </div>
+
+        <!-- قسم الإحصائيات -->
+        <div class="stats">
+            <div class="stat-item">
+                <h3>0+</h3>
+                <p>سيرفر</p>
+            </div>
+            <div class="stat-item">
+                <h3>0+</h3>
+                <p>مستخدم</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>دعم فني</p>
+            </div>
+        </div>
+
+        <!-- قسم إضافة البوت -->
+        <div class="section">
+            <h2>كيفية إضافة البوت إلى سيرفرك</h2>
+            <p>
+                لإضافة البوت إلى سيرفرك، اضغط على الزر أدناه واتبع الخطوات:
+            </p>
+            <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&permissions=8&scope=bot" class="btn" target="_blank">إضافة البوت</a>
+        </div>
+
+        <!-- قسم التعليقات -->
+        <div class="section comments">
+            <h2>التعليقات</h2>
+            <div class="comment-form">
+                <input type="text" id="comment-name" placeholder="اسمك" required>
+                <textarea id="comment-text" placeholder="تعليقك" required></textarea>
+                <button type="button" onclick="addComment()">إرسال التعليق</button>
+            </div>
+            <div class="comments-list" id="comments-list">
+                <!-- التعليقات سيتم إضافتها هنا -->
+            </div>
+        </div>
+
+        <!-- قسم الدعم الفني -->
+        <div class="section">
+            <h2>الدعم الفني</h2>
+            <div class="support-list">
+                <!-- عنصر 1 -->
+                <div class="support-item">
+                    <div class="support-item-header">
+                        <h3>كيفية إضافة البوت إلى السيرفر؟</h3>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="support-item-content">
+                        <p>لإضافة البوت إلى سيرفرك، اتبع الخطوات التالية:<br>
+                        1. اضغط على <a href="#" style="color: #ff0000;">هذا الرابط</a>.<br>
+                        2. اختر السيرفر الذي تريد إضافة البوت إليه.<br>
+                        3. اضغط على "تفعيل".</p>
+                    </div>
+                </div>
+
+                <!-- عنصر 2 -->
+                <div class="support-item">
+                    <div class="support-item-header">
+                        <h3>كيفية استخدام أوامر البوت؟</h3>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="support-item-content">
+                        <p>يمكنك استخدام الأوامر التالية:<br>
+                        - <code>!play [اسم الأغنية]</code>: لتشغيل الموسيقى.<br>
+                        - <code>!kick [اسم المستخدم]</code>: لطرد عضو.<br>
+                        - <code>!help</code>: لعرض جميع الأوامر.</p>
+                    </div>
+                </div>
+
+                <!-- عنصر 3 -->
+                <div class="support-item">
+                    <div class="support-item-header">
+                        <h3>ماذا أفعل إذا واجهت مشكلة؟</h3>
+                        <span class="icon">▼</span>
+                    </div>
+                    <div class="support-item-content">
+                        <p>إذا واجهت أي مشكلة، يمكنك التواصل مع الدعم الفني عبر:<br>
+                        - البريد الإلكتروني: <a href="mailto:support@example.com" style="color: #ff0000;">support@example.com</a>.<br>
+                        - قناة الدعم على الديسكورد: <a href="#" style="color: #ff0000;">اضغط هنا</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>تم التطوير بواسطة <a href="https://discord.com/users/YOUR_DISCORD_ID" target="_blank">Snko</a> | جميع الحقوق محفوظة &copy; 2023</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // إضافة تعليق جديد
+        function addComment() {
+            const name = document.getElementById('comment-name').value;
+            const text = document.getElementById('comment-text').value;
+
+            if (name && text) {
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment-item');
+                commentElement.innerHTML = `
+                    <h3>${name}</h3>
+                    <p>${text}</p>
+                `;
+
+                document.getElementById('comments-list').appendChild(commentElement);
+
+                // مسح الحقول بعد الإرسال
+                document.getElementById('comment-name').value = '';
+                document.getElementById('comment-text').value = '';
+            } else {
+                alert('الرجاء ملء جميع الحقول!');
+            }
+        }
+
+        // تفعيل طي وفرد العناصر
+        const supportItems = document.querySelectorAll('.support-item');
+
+        supportItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي على Vercel</title>
+
+
+    <h1>مرحبًا بكم في موقعي!</h1>
+    <p>تم نشر هذا الموقع باستخدام Vercel.</p>
+
+
+
+</body>
+</html>
+
+
