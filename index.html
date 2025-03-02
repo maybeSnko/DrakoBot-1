@@ -3,391 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوت ديسكورد - Drako Bot</title>
-    <!-- إضافة Font Awesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="description" content="تعرف على Drako Bot، بوت ديسكورد متطور لإدارة السيرفرات وتحسين تجربتك على ديسكورد.">
+    <title>Drako Bot - بوت ديسكورد الاحترافي</title>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* التصميم العام */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #000; /* خلفية سوداء */
-            color: #fff; /* نص أبيض */
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #000, #111);
+            color: #fff;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-        }
-
-        /* تصميم الهيدر */
-        header {
-            background-color: #1a1a1a; /* خلفية داكنة */
-            padding: 60px 20px;
+            line-height: 1.8;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
-            animation: fadeIn 2s ease-in-out;
+            overflow-x: hidden;
         }
-
+        header {
+            background: linear-gradient(135deg, #ff0000, #8b0000);
+            padding: 50px 20px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+            animation: slideIn 1s ease-in-out;
+        }
         header h1 {
-            margin: 0;
             font-size: 3.5rem;
-            color: #ff0000; /* لون أحمر */
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.3);
         }
-
-        header p {
-            margin: 10px 0 0;
-            font-size: 1.3rem;
-            color: #b9bbbe; /* لون رمادي فاتح */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* تصميم المحتوى */
         .container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
         }
-
-        .section {
-            background-color: #1a1a1a; /* خلفية داكنة */
+        .intro-section {
+            background: #1a1a1a;
             padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideUp 0.5s ease forwards;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(255, 0, 0, 0.4);
+            margin-bottom: 40px;
+            text-align: right;
         }
-
-        .section:nth-child(1) { animation-delay: 0.2s; }
-        .section:nth-child(2) { animation-delay: 0.4s; }
-        .section:nth-child(3) { animation-delay: 0.6s; }
-        .section:nth-child(4) { animation-delay: 0.8s; }
-        .section:nth-child(5) { animation-delay: 1s; }
-
-        @keyframes slideUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 12px rgba(255, 0, 0, 0.5); /* ظل أحمر أقوى */
-        }
-
-        .section h2 {
-            color: #ff0000; /* لون أحمر */
+        .intro-section h2 {
+            font-size: 2rem;
+            color: #ff5555;
             margin-bottom: 20px;
-            font-size: 2.5rem;
-            text-align: center;
         }
-
-        .section p {
-            color: #b9bbbe; /* لون رمادي فاتح */
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        .section ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .section ul li {
-            background-color: #262626; /* خلفية داكنة */
-            margin: 15px 0;
-            padding: 15px;
-            border-radius: 10px;
-            color: #fff; /* نص أبيض */
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .section ul li i {
-            margin-left: 10px;
-            color: #ff0000; /* لون أحمر */
-            font-size: 1.5rem;
-        }
-
-        .section ul li:hover {
-            background-color: #ff0000; /* لون أحمر عند التحويم */
-        }
-
-        /* تصميم الأزرار */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #ff0000; /* لون أحمر */
-            color: #fff; /* نص أبيض */
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+        .intro-section p {
             font-size: 1.1rem;
+            color: #ddd;
+        }
+        .features-title {
+            font-size: 2.5rem;
+            color: #ff5555;
+            margin-bottom: 30px;
             text-align: center;
+            text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out;
         }
-
+        .features-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(255, 0, 0, 0.4);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            width: 300px;
+            text-align: right;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(255, 0, 0, 0.6);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ff5555;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+        .card .icon {
+            font-size: 2.5rem;
+            color: #ff5555;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: #fff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+            margin-top: 20px;
+        }
         .btn:hover {
-            background-color: #cc0000; /* لون أحمر غامق */
-            transform: translateY(-3px);
+            background: linear-gradient(135deg, #cc0000, #990000);
+            box-shadow: 0 6px 12px rgba(255, 0, 0, 0.6);
+            transform: scale(1.05);
         }
-
-        /* تصميم الإحصائيات */
         .stats {
             display: flex;
-            justify-content: space-around;
-            text-align: center;
+            justify-content: center;
+            gap: 30px;
             margin: 40px 0;
             flex-wrap: wrap;
         }
-
-        .stats .stat-item {
-            background-color: #1a1a1a; /* خلفية داكنة */
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
-            width: 30%;
-            margin: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .stats .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stats .stat-item h3 {
-            color: #ff0000; /* لون أحمر */
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        .stats .stat-item p {
-            color: #b9bbbe; /* لون رمادي فاتح */
-            font-size: 1.2rem;
-        }
-
-        /* تصميم التعليقات */
-        .comments {
-            margin-top: 40px;
-        }
-
-        .comment-form {
-            background-color: #262626; /* خلفية داكنة */
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
-            margin-bottom: 20px;
-        }
-
-        .comment-form input,
-        .comment-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #444; /* حدود رمادية */
-            border-radius: 5px;
-            background-color: #333; /* خلفية داكنة */
-            color: #fff; /* نص أبيض */
-            font-size: 16px;
-        }
-
-        .comment-form textarea {
-            resize: vertical;
-            height: 120px;
-        }
-
-        .comment-form button {
-            background-color: #ff0000; /* لون أحمر */
-            color: #fff; /* نص أبيض */
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .comment-form button:hover {
-            background-color: #cc0000; /* لون أحمر غامق */
-            transform: translateY(-3px);
-        }
-
-        .comments-list {
-            margin-top: 20px;
-        }
-
-        .comment-item {
-            background-color: #262626; /* خلفية داكنة */
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .comment-item h3 {
-            margin: 0;
-            color: #ff0000; /* لون أحمر */
-        }
-
-        .comment-item p {
-            margin: 10px 0;
-            color: #b9bbbe; /* لون رمادي فاتح */
-        }
-
-        /* تصميم الدعم الفني */
-        .support-list {
-            margin-top: 20px;
-        }
-
-        .support-item {
-            background-color: #262626; /* خلفية داكنة */
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .support-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .support-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            cursor: pointer;
-            background-color: #333; /* خلفية داكنة */
-        }
-
-        .support-item-header h3 {
-            margin: 0;
-            color: #ff0000; /* لون أحمر */
-        }
-
-        .support-item-header .icon {
-            font-size: 20px;
-            color: #ff0000; /* لون أحمر */
-            transition: transform 0.3s ease;
-        }
-
-        .support-item.active .icon {
-            transform: rotate(180deg);
-        }
-
-        .support-item-content {
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-        }
-
-        .support-item.active .support-item-content {
-            padding: 15px;
-            max-height: 500px;
-        }
-
-        .support-item-content p {
-            margin: 0;
-            color: #b9bbbe; /* لون رمادي فاتح */
-        }
-
-        /* تصميم التواصل الاجتماعي */
-        .social-links {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            color: #ff0000; /* لون أحمر */
-            font-size: 2rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #cc0000; /* لون أحمر غامق */
-            transform: translateY(-5px);
-        }
-
-        /* تصميم الفوتر */
-        footer {
-            text-align: center;
+        .stat-item {
+            background: #1a1a1a;
             padding: 30px;
-            background-color: #1a1a1a; /* خلفية داكنة */
-            color: #b9bbbe; /* لون رمادي فاتح */
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(255, 0, 0, 0.4);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            width: 200px;
+            text-align: center;
+        }
+        .stat-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(255, 0, 0, 0.6);
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #ff5555;
+            margin-bottom: 10px;
+        }
+        .stat-item p {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(255, 0, 0, 0.4);
+        }
+        .social-links a {
+            color: #fff;
+            font-size: 2rem;
+            transition: transform 0.3s ease, color 0.3s;
+        }
+        .social-links a:hover {
+            color: #ff5555;
+            transform: translateY(-5px);
+        }
+        footer {
+            background: #111;
+            color: #b9bbbe;
+            padding: 20px;
             margin-top: 40px;
-            box-shadow: 0 -4px 6px rgba(255, 0, 0, 0.3); /* ظل أحمر */
+            box-shadow: 0 -4px 8px rgba(255, 0, 0, 0.4);
         }
-
-        footer a {
-            color: #ff0000; /* لون أحمر */
-            text-decoration: none;
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-
-        footer a:hover {
-            text-decoration: underline;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        /* تصميم للهواتف */
-        @media (max-width: 768px) {
-            .stats .stat-item {
-                width: 100%;
-                margin: 10px 0;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .section p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 10px;
-            }
+        .status {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00ff00;
+            text-shadow: 1px 1px 10px rgba(0, 255, 0, 0.7);
         }
     </style>
 </head>
 <body>
-
-    <!-- الهيدر -->
     <header>
         <h1>Drako Bot</h1>
         <p>بوت ديسكورد متطور لإدارة السيرفرات وتوفير تجربة ممتعة!</p>
+        <p class="status">جاري التحقق من حالة البوت...</p>
     </header>
 
-    <!-- المحتوى الرئيسي -->
+    <!-- مقدمة عن البوت -->
     <div class="container">
-        <!-- قسم المقدمة -->
-        <div class="section">
+        <div class="intro-section">
             <h2>مقدمة عن البوت</h2>
-            <p>
-                مرحبًا! هذا البوت مصمم لمساعدة مدراء السيرفرات في إدارة أعضائهم وتوفير تجربة تفاعلية ممتعة.
-                يحتوي البوت على العديد من الميزات التي تجعل سيرفرك أكثر تنظيمًا وحيوية.
-            </p>
+            <p>مرحبًا! هذا البوت مصمم لمساعدة مدراء السيرفرات في تنظيم الأعضاء وتوفير تجربة تفاعلية مذهلة. يتميز Drako Bot بالعديد من الميزات المتقدمة التي تجعل إدارة السيرفرات أسهل وأكثر متعة.</p>
         </div>
+    </div>
 
-        <!-- قسم الميزات -->
-        <div class="section">
-            <h2>ميزات البوت</h2>
-            <ul>
-                <li><i class="fas fa-users-cog"></i> إدارة الأعضاء (طرد، حظر، كتم).</li>
-                <li><i class="fas fa-music"></i> تشغيل الموسيقى في القنوات الصوتية.</li>
-                <li><i class="fas fa-gamepad"></i> أوامر ترفيهية مثل الأسئلة والألعاب.</li>
-                <li><i class="fas fa-exclamation-triangle"></i> نظام تحذيرات تلقائي.</li>
-                <li><i class="fas fa-language"></i> دعم اللغة العربية.</li>
-            </ul>
-        </div>
-
-        <!-- قسم الإحصائيات -->
+    <!-- قسم الإحصائيات -->
+    <div class="container">
         <div class="stats">
             <div class="stat-item">
                 <h3>0+</h3>
@@ -402,78 +218,87 @@
                 <p>دعم فني</p>
             </div>
         </div>
+    </div>
 
-        <!-- قسم إضافة البوت -->
-        <div class="section">
-            <h2>كيفية إضافة البوت إلى سيرفرك</h2>
-            <p>
-                لإضافة البوت إلى سيرفرك، اضغط على الزر أدناه واتبع الخطوات:
-            </p>
-            <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&permissions=8&scope=bot" class="btn" target="_blank">إضافة البوت</a>
-        </div>
-
-        <!-- قسم التعليقات -->
-        <div class="section comments">
-            <h2>التعليقات</h2>
-            <div class="comment-form">
-                <input type="text" id="comment-name" placeholder="اسمك" required>
-                <textarea id="comment-text" placeholder="تعليقك" required></textarea>
-                <button type="button" onclick="addComment()">إرسال التعليق</button>
+    <!-- ميزات دراكو بوت -->
+    <div class="container">
+        <h2 class="features-title">ميزات دراكو بوت</h2>
+        <div class="features-container">
+            <div class="card">
+                <div class="icon">⚙️</div>
+                <h3>إدارة السيرفر</h3>
+                <p>إدارة كاملة للسيرفر مع أوامر سهلة لتنظيم الأعضاء والأدوار.</p>
             </div>
-            <div class="comments-list" id="comments-list">
-                <!-- التعليقات سيتم إضافتها هنا -->
+            <div class="card">
+                <div class="icon">🎭</div>
+                <h3>نظام الأدوار التلقائي</h3>
+                <p>نظام أدوار تلقائي يعتمد على نشاط الأعضاء في السيرفر.</p>
             </div>
-        </div>
-
-        <!-- قسم الدعم الفني -->
-        <div class="section">
-            <h2>الدعم الفني</h2>
-            <div class="support-list">
-                <!-- عنصر 1 -->
-                <div class="support-item">
-                    <div class="support-item-header">
-                        <h3>كيفية إضافة البوت إلى السيرفر؟</h3>
-                        <span class="icon">▼</span>
-                    </div>
-                    <div class="support-item-content">
-                        <p>لإضافة البوت إلى سيرفرك، اتبع الخطوات التالية:<br>
-                        1. اضغط على <a href="#" style="color: #ff0000;">هذا الرابط</a>.<br>
-                        2. اختر السيرفر الذي تريد إضافة البوت إليه.<br>
-                        3. اضغط على "تفعيل".</p>
-                    </div>
-                </div>
-
-                <!-- عنصر 2 -->
-                <div class="support-item">
-                    <div class="support-item-header">
-                        <h3>كيفية استخدام أوامر البوت؟</h3>
-                        <span class="icon">▼</span>
-                    </div>
-                    <div class="support-item-content">
-                        <p>يمكنك استخدام الأوامر التالية:<br>
-                        - <code>!play [اسم الأغنية]</code>: لتشغيل الموسيقى.<br>
-                        - <code>!kick [اسم المستخدم]</code>: لطرد عضو.<br>
-                        - <code>!help</code>: لعرض جميع الأوامر.</p>
-                    </div>
-                </div>
-
-                <!-- عنصر 3 -->
-                <div class="support-item">
-                    <div class="support-item-header">
-                        <h3>ماذا أفعل إذا واجهت مشكلة؟</h3>
-                        <span class="icon">▼</span>
-                    </div>
-                    <div class="support-item-content">
-                        <p>إذا واجهت أي مشكلة، يمكنك التواصل مع الدعم الفني عبر:<br>
-                        - البريد الإلكتروني: <a href="mailto:support@example.com" style="color: #ff0000;">support@example.com</a>.<br>
-                        - قناة الدعم على الديسكورد: <a href="#" style="color: #ff0000;">اضغط هنا</a>.</p>
-                    </div>
-                </div>
+            <div class="card">
+                <div class="icon">🎵</div>
+                <h3>مشغل موسيقى</h3>
+                <p>مشغل موسيقى متكامل يدعم العديد من المنصات مثل YouTube وSpotify.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🤖</div>
+                <h3>ذكاء اصطناعي</h3>
+                <p>تفاعل ذكي مع الأعضاء باستخدام الذكاء الاصطناعي للرد على الأسئلة.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🔒</div>
+                <h3>نظام الحماية</h3>
+                <p>حماية متقدمة ضد السبام والمخترقين مع نظام مراقبة فعال.</p>
+            </div>
+            <div class="card">
+                <div class="icon">📊</div>
+                <h3>إحصائيات مفصلة</h3>
+                <p>إحصائيات مفصلة عن نشاط السيرفر والأعضاء.</p>
+            </div>
+            <div class="card">
+                <div class="icon">🎉</div>
+                <h3>ألعاب وتفاعلات</h3>
+                <p>ألعاب ترفيهية وتفاعلات ممتعة للأعضاء.</p>
             </div>
         </div>
+    </div>
 
-        <!-- قسم التواصل الاجتماعي -->
-        <div class="section">
-            <h2>تواصل معنا</h2>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-discord"></i></
+    <!-- كيفية إضافة البوت -->
+    <div class="container">
+        <div class="intro-section">
+            <h2>كيفية إضافة البوت</h2>
+            <p>لإضافة البوت إلى سيرفرك، اضغط على الزر أدناه:</p>
+            <a href="https://discord.com/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&permissions=8&scope=bot" class="btn" target="_blank">🔗 إضافة البوت</a>
+        </div>
+    </div>
+
+    <!-- روابط التواصل الاجتماعي -->
+    <div class="container">
+        <div class="social-links">
+            <a href="https://twitter.com/YourTwitter" target="_blank" title="تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="https://discord.gg/YourDiscord" target="_blank" title="ديسكورد"><i class="fab fa-discord"></i></a>
+            <a href="https://github.com/YourGithub" target="_blank" title="جيت هاب"><i class="fab fa-github"></i></a>
+            <a href="https://youtube.com/YourYouTube" target="_blank" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <footer>
+        <p>تم التطوير بواسطة <a href="https://discord.com/users/YOUR_DISCORD_ID" target="_blank" style="color: #ff5555;">Snko</a> | جميع الحقوق محفوظة &copy; 2023</p>
+    </footer>
+
+    <script>
+        function checkBotStatus() {
+            $.get("https://your-api.com/bot-status", function(response) {
+                if (response.status === "online") {
+                    $(".status").text("البوت متصل ✅").css("color", "#00ff00");
+                } else {
+                    $(".status").text("البوت غير متصل ❌").css("color", "#ff0000");
+                }
+            }).fail(function() {
+                $(".status").text("تعذر التحقق من حالة البوت ❌").css("color", "#ff0000");
+            });
+        }
+        checkBotStatus();
+        setInterval(checkBotStatus, 60000);
+    </script>
+</body>
+</html>
